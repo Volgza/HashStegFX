@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane fx:id="rootPane" prefHeight="425.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hashsteg.hashstegfx.Controller">
+      <children>
+         <Button layoutX="499.0" layoutY="93.0" mnemonicParsing="false" onAction="#generateKey" text="*" />
+         <Text layoutX="11.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отредактированный текст" />
+         <Text layoutX="322.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ключ" />
+         <Text layoutX="322.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Сообщение" />
+         <TextField fx:id="KeyField" layoutX="321.0" layoutY="93.0" />
+         <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Исходный текст" />
+         <Button layoutX="367.0" layoutY="154.0" mnemonicParsing="false" onAction="#fileChooser" text="Вложить" />
+         <Button layoutX="402.0" layoutY="117.0" mnemonicParsing="false" text="Загрузить" />
+         <TextField fx:id="SecretMess" layoutX="322.0" layoutY="37.0" />
+         <TextArea fx:id="inputTextArea" layoutX="11.0" layoutY="37.0" prefHeight="141.0" prefWidth="279.0" wrapText="true" />
+         <TextArea fx:id="outputTextArea" layoutX="11.0" layoutY="211.0" prefHeight="141.0" prefWidth="279.0" wrapText="true" />
+      <Button layoutX="201.0" layoutY="10.0" mnemonicParsing="false" onAction="#fileChooser" text="Загрузить" />
+      <Button layoutX="199.0" layoutY="185.0" mnemonicParsing="false" text="Сохранить" />
+      </children>
+</Pane>

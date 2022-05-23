@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hashsteg.hashstegfx.Controller">
+    <VBox layoutX="14.0" layoutY="65.0" prefHeight="27.0" prefWidth="600.0" AnchorPane.bottomAnchor="373.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <MenuBar>
+                <menus>
+                    <Menu mnemonicParsing="false" text="Режим">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#handleButtonAction1" text="Вложение" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleButtonAction2" text="Извлечение" />
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Настройка">
+                        <items>
+                            <CheckMenuItem mnemonicParsing="false" text="Использовать 2 бита хеша" />
+                            <CheckMenuItem mnemonicParsing="false" text="Двоичная последовательность" />
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+        </children>
+    </VBox>
+   <Pane fx:id="rootPane" layoutY="26.0" prefHeight="374.0" prefWidth="530.0" />
+
+</AnchorPane>
