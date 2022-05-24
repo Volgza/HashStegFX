@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="179.0" prefWidth="266.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hashsteg.hashstegfx.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="179.0" prefWidth="266.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hashsteg.hashstegfx.Controller">
     <children>
-        <TextField alignment="CENTER" layoutX="43.0" layoutY="94.0" prefHeight="45.0" prefWidth="54.0" style="-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);">
+        <TextField fx:id="CurrentValue" alignment="CENTER" editable="false" layoutX="43.0" layoutY="94.0" prefHeight="45.0" prefWidth="54.0" style="-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </TextField>
-        <TextField layoutX="23.0" layoutY="21.0" prefHeight="31.0" prefWidth="220.0" />
+        <TextField fx:id="CurrentSentence" layoutX="23.0" layoutY="21.0" prefHeight="31.0" prefWidth="220.0" />
         <Text layoutX="27.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Текущее значение" textAlignment="CENTER" wrappingWidth="86.13671875" />
         <Text layoutX="147.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Требуемое значение" textAlignment="CENTER" wrappingWidth="86.13671875" />
-        <Button layoutX="93.0" layoutY="147.0" mnemonicParsing="false" text="Применить" />
-        <Button contentDisplay="CENTER" layoutX="216.0" layoutY="147.0" mnemonicParsing="false" text="--&gt;" textAlignment="CENTER" />
-        <TextField alignment="CENTER" layoutX="163.0" layoutY="94.0" prefHeight="45.0" prefWidth="54.0" style="-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);">
+        <Button layoutX="93.0" layoutY="147.0" mnemonicParsing="false" onAction="#ApplySentence" text="Применить" />
+        <Button contentDisplay="CENTER" layoutX="216.0" layoutY="147.0" mnemonicParsing="false" onAction="#NextSentence" text="--&gt;" textAlignment="CENTER" />
+        <TextField fx:id="NeedValue" alignment="CENTER" editable="false" layoutX="163.0" layoutY="94.0" prefHeight="45.0" prefWidth="54.0" style="-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>

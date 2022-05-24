@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fceb8c67-48db-45af-9803-759508d1032a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hashsteg/hashstegfx/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hashsteg/hashstegfx/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/hash.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/input.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/inputText.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/output.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/start.fxml" afterDir="false" />
+    <list default="true" id="fceb8c67-48db-45af-9803-759508d1032a" name="Changes" comment="Application for HashSteg">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hashsteg/hashstegfx/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hashsteg/hashstegfx/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/hash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/hash.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/input.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/input.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +41,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/home/maria/IdeaProjects/HashSteg",
-    "settings.editor.selected.configurable": "preferences.JavaFX"
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="RunManager">
@@ -76,6 +62,14 @@
       <option name="presentableId" value="Default" />
       <updated>1653061804820</updated>
     </task>
+    <task id="LOCAL-00001" summary="Application for HashSteg">
+      <created>1653331668783</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1653331668783</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +82,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Application for HashSteg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Application for HashSteg" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

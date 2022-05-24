@@ -12,8 +12,8 @@
          <Text layoutX="322.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Сообщение" />
          <TextField fx:id="KeyField" layoutX="321.0" layoutY="93.0" />
          <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Исходный текст" />
-         <Button layoutX="367.0" layoutY="154.0" mnemonicParsing="false" onAction="#fileChooser" text="Вложить" />
-         <Button layoutX="402.0" layoutY="117.0" mnemonicParsing="false" text="Загрузить" />
+         <Button layoutX="367.0" layoutY="154.0" mnemonicParsing="false" onAction="#inputSecretMess" text="Вложить" />
+         <Button layoutX="400.0" layoutY="117.0" mnemonicParsing="false" onAction="#CopyToClipboard" text="Сохранить" />
          <TextField fx:id="SecretMess" layoutX="322.0" layoutY="37.0" />
          <TextArea fx:id="inputTextArea" layoutX="11.0" layoutY="37.0" prefHeight="141.0" prefWidth="279.0" wrapText="true" />
          <TextArea fx:id="outputTextArea" layoutX="11.0" layoutY="211.0" prefHeight="141.0" prefWidth="279.0" wrapText="true" />
