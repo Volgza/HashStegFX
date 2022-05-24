@@ -6,11 +6,11 @@
 
 <Pane fx:id="rootPane" prefHeight="201.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hashsteg.hashstegfx.Controller">
    <children>
-      <Button layoutX="404.0" layoutY="60.0" mnemonicParsing="false" text="Загрузить" />
+      <Button layoutX="404.0" layoutY="60.0" mnemonicParsing="false" onAction="#loadKey" text="Загрузить" />
       <TextArea fx:id="inputTextArea" layoutX="11.0" layoutY="33.0" prefHeight="149.0" prefWidth="279.0" wrapText="true" />
-      <TextField layoutX="322.0" layoutY="156.0" />
-      <Button layoutX="367.0" layoutY="101.0" mnemonicParsing="false" text="Извлечь" />
-      <TextField layoutX="322.0" layoutY="33.0" />
+      <TextField fx:id="DecMess" layoutX="322.0" layoutY="156.0" />
+      <Button layoutX="367.0" layoutY="101.0" mnemonicParsing="false" onAction="#extractMess" text="Извлечь" />
+      <TextField fx:id="KeyField" layoutX="322.0" layoutY="33.0" />
       <Text layoutX="11.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Исходный текст" />
       <Text layoutX="322.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Сообщение" />
       <Text layoutX="322.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ключ" />

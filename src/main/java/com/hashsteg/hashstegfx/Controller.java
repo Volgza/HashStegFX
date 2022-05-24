@@ -14,10 +14,7 @@ import javafx.stage.Stage;
 import javafx.scene.input.Clipboard;
 
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -25,15 +22,20 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Objects;
 
+import static java.lang.Math.ceil;
+
 public class Controller {
+
     FileChooser fileCh = new FileChooser();
+    FileChooser fileOutCh = new FileChooser();
     StringBuilder AppendText = new StringBuilder();
+    static StringBuilder Key = new StringBuilder();
     static int MessLength;
-    short[] arrayKey;
+    static short[] arrayKey;
     static StringBuilder cipherSb = new StringBuilder();
     static String[] arrayForMess;
     static String HashBit;
-    StringBuilder OutAppendText = new StringBuilder();
+    static StringBuilder OutAppendText = new StringBuilder();
     Stage InputStage = new Stage();
     @FXML
     private TextField CurrentSentence;
@@ -45,11 +47,12 @@ public class Controller {
     @FXML
     private Pane rootPane;
     @FXML
+    public TextField DecMess;
+    @FXML
     private TextArea inputTextArea;
 
     @FXML
-    private TextArea outputTextArea;
-
+    TextArea outputTextArea;
     @FXML
     private TextField SecretMess;
 
@@ -154,6 +157,8 @@ public class Controller {
         InputStage.setTitle("Редактирование текста");
         InputStage.setScene(new Scene(hashpane));
         InputStage.show();
+
+
     }
 
     int CounterForNext = 0;
@@ -180,13 +185,13 @@ public class Controller {
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] hash = md.digest(CurrentSentence.getText().getBytes(StandardCharsets.UTF_8));
         StringBuilder HashBuilder = new StringBuilder();
-            for (int j = 0; j < hash.length; j++) {
-                String s = Integer.toBinaryString(0xff & hash[j]);
-                if (s.length() < 8) {
-                    int LengthOfZero = 8 - s.length();
-                    s = "0".repeat(LengthOfZero) + s;
-                }
-                HashBuilder.append(s);
+        for (int j = 0; j < hash.length; j++) {
+            String s = Integer.toBinaryString(0xff & hash[j]);
+            if (s.length() < 8) {
+                int LengthOfZero = 8 - s.length();
+                s = "0".repeat(LengthOfZero) + s;
+            }
+            HashBuilder.append(s);
 
         }
         //System.out.println(HashBuilder);
@@ -194,21 +199,35 @@ public class Controller {
         if (Objects.equals(NeedValue.getText(), CurrentValue.getText())) {
             CurrentValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
             NeedValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
-            OutAppendText.append(CurrentSentence.getText());
-            System.out.print(CounterForNext+" ");
-            System.out.println(cipherSb);
+            OutAppendText.append(" ").append(CurrentSentence.getText());
+            System.out.print(CounterForNext + " ");
+            System.out.println(cipherSb.length());
 
 
-        }
-        else {
+        } else {
             CurrentValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(255, 102, 102);");
             NeedValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(255, 102, 102);");
         }
-        if ((Objects.equals(NeedValue.getText(), CurrentValue.getText())) && CounterForNext == cipherSb.length()) {
-            InputStage.close();
-        }
-        outputTextArea.setText(OutAppendText.toString());
 
+    }
+
+    @FXML
+    private void loadOutputText (ActionEvent event) {
+        outputTextArea.setText(OutAppendText.toString());
+        }
+
+    @FXML
+    private void saveOutputText(ActionEvent event) throws IOException {
+        fileOutCh.setTitle("Выберете файл");
+        fileOutCh.getExtensionFilters().add(new FileChooser.ExtensionFilter(".txt", "*.txt"));
+        File fileOut = fileCh.showOpenDialog(null);
+        try (FileWriter fw = new FileWriter(fileOut)) {
+
+            fw.write(outputTextArea.getText());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     private void fileChooser(ActionEvent event) throws IOException{
@@ -224,6 +243,10 @@ public class Controller {
 
     }
     @FXML
+    private void loadKey(ActionEvent event) {
+        KeyField.setText(Key.toString());
+    }
+    @FXML
     private void generateKey(ActionEvent event) {
         SecureRandom randomKey = new SecureRandom();
         MessLength = SecretMess.getLength();
@@ -231,7 +254,7 @@ public class Controller {
         for (int l = 0; l < MessLength; l++) {
             arrayKey[l] = (short) randomKey.nextInt();
         }
-        StringBuilder Key = new StringBuilder();
+
         for (int i=0; i<arrayKey.length; i++) {
             String keyPart = Integer.toBinaryString(arrayKey[i]);
             if (keyPart.length()<32) {
@@ -250,6 +273,69 @@ public class Controller {
         ClipboardContent ClipCont = new ClipboardContent();
         ClipCont.putString(KeyField.getText());
         Clipboard.getSystemClipboard().setContent(ClipCont);
+    }
+
+
+    public void extractMess(ActionEvent event) throws NoSuchAlgorithmException {
+        String[] array = AppendText.toString().split("(?<=[.,!?:])\\s");
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        char[] outfirstbit = new char[array.length];
+        for (int i = 0; i < array.length; i++) {
+            byte[] hash = md.digest(array[i].getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < hash.length; j++) {
+                String s = Integer.toBinaryString(0xff & hash[j]);
+                if (s.length() < 8) {
+                    int LengthOfZero = 8 - s.length();
+                    s = "0".repeat(LengthOfZero) + s;
+                }
+                sb.append(s);
+            }
+            //System.out.println(String.format("%s", sb.toString()));
+            outfirstbit[i] = sb.charAt(0);
+        }
+        StringBuilder cipherOutSb = new StringBuilder();
+        for (int k = 0; k < outfirstbit.length; k++) {
+            cipherOutSb.append(outfirstbit[k]);
+        }
+        int decOutLenght = (int) ceil(cipherOutSb.length() / 11.0);
+        StringBuilder decodSb = new StringBuilder();
+        String[] decodeMess = new String[decOutLenght];
+        int j = 0;
+        for (int i = 0; i < cipherOutSb.length() - 10; i = i + 11) {
+            decodeMess[j] = cipherOutSb.substring(i, i + 11);
+            j++;
+        }
+        //System.out.println("массив зашифрованных строк " + Arrays.toString(decodeMess));
+
+        short[] DecodeappendMessAr = new short[decOutLenght];
+        for (int i = 0; i < decOutLenght; i++) {
+            DecodeappendMessAr[i] = Short.parseShort(decodeMess[i], 2);
+        }
+        //System.out.println("первый элемент массива для расшифровки "+Integer.toBinaryString(DecodeappendMessAr[0]));
+
+        short[] DecodeCipherMess = new short[decOutLenght];
+        for (int i = 0; i < decOutLenght; i++) {
+            DecodeCipherMess[i] = (short) (DecodeappendMessAr[i] ^ arrayKey[i]);
+        }
+        String[] DecodecipherSb = new String[decOutLenght];
+        for (int i = 0; i < decOutLenght; i++) {
+            String StcipM = Integer.toBinaryString(DecodeCipherMess[i]);
+            if (StcipM.length() < 32) {
+                int LengthOfZero = 32 - StcipM.length();
+                StcipM = "0".repeat(LengthOfZero) + StcipM;
+                DecodecipherSb[i] = StcipM.substring(21, 32);
+            } else {
+                DecodecipherSb[i] = StcipM.substring(21, 32);
+            }
+        }
+        //System.out.println("массив расшифрованных символов"+Arrays.toString(DecodecipherSb));
+        StringBuilder decryptedString = new StringBuilder();
+        for (int i = 0; i < decOutLenght; i++) {
+            int outascii = Integer.parseInt(DecodecipherSb[i], 2);
+            decryptedString.append((char) outascii);
+        }
+        DecMess.setText(decryptedString.toString());
     }
 
 }
