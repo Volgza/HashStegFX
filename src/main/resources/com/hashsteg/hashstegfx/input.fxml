@@ -20,5 +20,6 @@
       <Button layoutX="201.0" layoutY="10.0" mnemonicParsing="false" onAction="#fileChooser" text="Загрузить" />
       <Button layoutX="199.0" layoutY="355.0" mnemonicParsing="false" onAction="#saveOutputText" text="Сохранить" />
       <Button layoutX="201.0" layoutY="183.0" mnemonicParsing="false" onAction="#loadOutputText" text="Загрузить" />
+      <Label fx:id="successLab" layoutX="331.0" layoutY="213.0" />
       </children>
 </Pane>

@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.ClipboardContent;
@@ -26,9 +28,11 @@ import static java.lang.Math.ceil;
 
 public class Controller {
 
+
     FileChooser fileCh = new FileChooser();
     FileChooser fileOutCh = new FileChooser();
     StringBuilder AppendText = new StringBuilder();
+    StringBuilder HastString = new StringBuilder();
     static StringBuilder Key = new StringBuilder();
     static int MessLength;
     static short[] arrayKey;
@@ -43,6 +47,7 @@ public class Controller {
     private TextField CurrentValue;
     @FXML
     private TextField NeedValue;
+    public Label successLab;
 
     @FXML
     private Pane rootPane;
@@ -120,8 +125,16 @@ public class Controller {
         String[] array = AppendText.toString().split("(?<=[.,!?:])\\s");
 
         arrayForMess = new String[arrayChar.length];
-        if (array.length < arrayChar.length)
-            System.out.println("Текст недостаточно длинный для вложения");
+        if (array.length < arrayChar.length) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("Ошибка");
+            alert.setHeaderText(null);
+            alert.setContentText("Текст недостаточно длинный");
+
+            alert.showAndWait();
+        }
+
         else {
 
             for (int i = 0; i < arrayForMess.length; i++) {
@@ -227,9 +240,40 @@ public class Controller {
     }
 
     @FXML
-    private void loadOutputText (ActionEvent event) {
+    private void loadOutputText (ActionEvent event) throws NoSuchAlgorithmException {
         outputTextArea.setText(OutAppendText.toString());
+        String[] array = OutAppendText.toString().split("(?<=[.,!?:])\\s");
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        char[] outfirstbit = new char[array.length];
+        for (int i = 0; i < array.length; i++) {
+            byte[] hash = md.digest(array[i].getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (int j = 0; j < hash.length; j++) {
+                String s = Integer.toBinaryString(0xff & hash[j]);
+                if (s.length() < 8) {
+                    int LengthOfZero = 8 - s.length();
+                    s = "0".repeat(LengthOfZero) + s;
+                }
+                sb.append(s);
+            }
+            outfirstbit[i] = sb.charAt(0);
         }
+        StringBuilder cipherOutSb = new StringBuilder();
+        for (int k = 0; k < outfirstbit.length; k++) {
+            cipherOutSb.append(outfirstbit[k]);
+        }
+        System.out.println(cipherOutSb);
+        System.out.println(cipherSb);
+        if (Objects.equals(cipherSb.toString(), cipherOutSb.toString())) {
+            successLab.setText("Вложение успешно");
+            successLab.setStyle("-fx-background-color: rgb(144, 238, 144);");
+        }
+        else {
+            successLab.setText("Вложение неуспешно");
+            successLab.setStyle("-fx-background-color: rgb(255, 102, 102);");
+        }
+        }
+
 
     @FXML
     private void saveOutputText(ActionEvent event) throws IOException {

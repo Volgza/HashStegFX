@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HashStegFX:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HashStegFX_jar</output-path>
+    <root id="archive" name="HashStegFX.jar">
+      <element id="module-output" name="HashStegFX" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/18-ea+6/javafx-fxml-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18-ea+6/javafx-controls-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18-ea+6/javafx-base-18-ea+6-linux.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/18-ea+6/javafx-base-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18-ea+6/javafx-graphics-18-ea+6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/18-ea+6/javafx-fxml-18-ea+6-linux.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/18-ea+6/javafx-controls-18-ea+6-linux.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/18-ea+6/javafx-graphics-18-ea+6-linux.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
