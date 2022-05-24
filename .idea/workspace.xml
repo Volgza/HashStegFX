@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hashsteg/hashstegfx/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hashsteg/hashstegfx/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/outputText.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/outputText.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/start.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/hashsteg/hashstegfx/start.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653410154507</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Application for HashSteg">
+      <created>1653411451414</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653411451414</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

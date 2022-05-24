@@ -61,14 +61,14 @@ public class Controller {
 
     @FXML
     private void handleButtonAction1(ActionEvent event) throws IOException {
-        System.out.println("вложение");
+
         Pane pane = FXMLLoader.load(getClass().getResource("input.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     private void handleButtonAction2(ActionEvent event) throws IOException {
-        System.out.println("извлечение");
+
         Pane pane2 = FXMLLoader.load(getClass().getResource("output.fxml"));
         rootPane.getChildren().setAll(pane2);
     }
@@ -113,10 +113,10 @@ public class Controller {
                 cipherSb.append(StcipM.substring(21, 32));
             }
         }
-        System.out.println("зашифрованная строка\n" + cipherSb);
+
 
         char[] arrayChar = cipherSb.toString().toCharArray();
-        //String[] array = appendText.toString().split(",|\\.|\\;|\"");
+
         String[] array = AppendText.toString().split("(?<=[.,!?:])\\s");
 
         arrayForMess = new String[arrayChar.length];
@@ -128,7 +128,7 @@ public class Controller {
                 arrayForMess[i] = array[i];
             }
         }
-        System.out.println(Arrays.toString(arrayForMess));
+
 
         MessageDigest md = MessageDigest.getInstance("MD5");
         char[] firstbit = new char[arrayForMess.length];
@@ -143,7 +143,7 @@ public class Controller {
                 }
                 sb.append(s);
             }
-            //System.out.println(String.format("%s", sb.toString()));
+
             firstbit[i] = sb.charAt(0);
         }
         StringBuilder cipherInSb = new StringBuilder();
@@ -152,7 +152,7 @@ public class Controller {
         }
         HashBit = cipherInSb.toString();
 
-        System.out.println("редактирование");
+
         Parent hashpane = (Parent) FXMLLoader.load(getClass().getResource("hash.fxml"));
         InputStage.setTitle("Редактирование текста");
         InputStage.setScene(new Scene(hashpane));
@@ -165,17 +165,29 @@ public class Controller {
 
     @FXML
     private void NextSentence(ActionEvent event) {
-        CurrentSentence.setText(arrayForMess[CounterForNext]);
-        CurrentValue.setText(String.valueOf(HashBit.charAt(CounterForNext)));
-        NeedValue.setText(String.valueOf(cipherSb.charAt(CounterForNext)));
-        if (cipherSb.charAt(CounterForNext) != HashBit.charAt(CounterForNext)) {
-            CurrentValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(255, 102, 102);");
-            NeedValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(255, 102, 102);");
-        } else {
-            CurrentValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
-            NeedValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
+        try {
+            CurrentSentence.setText(arrayForMess[CounterForNext]);
+            CurrentValue.setText(String.valueOf(HashBit.charAt(CounterForNext)));
+            NeedValue.setText(String.valueOf(cipherSb.charAt(CounterForNext)));
+            if (cipherSb.charAt(CounterForNext) != HashBit.charAt(CounterForNext)) {
+                CurrentValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(255, 102, 102);");
+                NeedValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(255, 102, 102);");
+            } else {
+                CurrentValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
+                NeedValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
+                if (CounterForNext==0) {
+                    OutAppendText.append(CurrentSentence.getText());
+                }
+                else {
+                    OutAppendText.append(" ").append(CurrentSentence.getText());
+                }
+            }
+            CounterForNext++;
         }
-        CounterForNext++;
+        catch (ArrayIndexOutOfBoundsException e){
+
+        }
+
 
     }
 
@@ -194,14 +206,17 @@ public class Controller {
             HashBuilder.append(s);
 
         }
-        //System.out.println(HashBuilder);
+
         CurrentValue.setText(String.valueOf(HashBuilder.charAt(0)));
         if (Objects.equals(NeedValue.getText(), CurrentValue.getText())) {
             CurrentValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
             NeedValue.setStyle("-fx-text-inner-color: black; -fx-background-color: rgb(144, 238, 144);");
-            OutAppendText.append(" ").append(CurrentSentence.getText());
-            System.out.print(CounterForNext + " ");
-            System.out.println(cipherSb.length());
+            if (CounterForNext==1) {
+                OutAppendText.append(CurrentSentence.getText());
+            }
+            else {
+                OutAppendText.append(" ").append(CurrentSentence.getText());
+            }
 
 
         } else {
@@ -306,13 +321,13 @@ public class Controller {
             decodeMess[j] = cipherOutSb.substring(i, i + 11);
             j++;
         }
-        //System.out.println("массив зашифрованных строк " + Arrays.toString(decodeMess));
+
 
         short[] DecodeappendMessAr = new short[decOutLenght];
         for (int i = 0; i < decOutLenght; i++) {
             DecodeappendMessAr[i] = Short.parseShort(decodeMess[i], 2);
         }
-        //System.out.println("первый элемент массива для расшифровки "+Integer.toBinaryString(DecodeappendMessAr[0]));
+
         String[] KeyArr = new String[decOutLenght];
         for (int i=0; i<decOutLenght; i++) {
             KeyArr[i] = "00000"+KeyField.getText().substring(i*11, i*11+11);
@@ -337,7 +352,7 @@ public class Controller {
                 DecodecipherSb[i] = StcipM.substring(21, 32);
             }
         }
-        //System.out.println("массив расшифрованных символов"+Arrays.toString(DecodecipherSb));
+
         StringBuilder decryptedString = new StringBuilder();
         for (int i = 0; i < decOutLenght; i++) {
             int outascii = Integer.parseInt(DecodecipherSb[i], 2);
