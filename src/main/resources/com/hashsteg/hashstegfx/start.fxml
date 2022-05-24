@@ -14,7 +14,7 @@
                             <MenuItem mnemonicParsing="false" onAction="#handleButtonAction2" text="Извлечение" />
                         </items>
                     </Menu>
-                    <Menu mnemonicParsing="false" text="Настройка">
+                    <Menu mnemonicParsing="false" text="Настройка" visible="false">
                         <items>
                             <CheckMenuItem mnemonicParsing="false" text="Использовать 2 бита хеша" />
                             <CheckMenuItem mnemonicParsing="false" text="Двоичная последовательность" />

@@ -313,6 +313,14 @@ public class Controller {
             DecodeappendMessAr[i] = Short.parseShort(decodeMess[i], 2);
         }
         //System.out.println("первый элемент массива для расшифровки "+Integer.toBinaryString(DecodeappendMessAr[0]));
+        String[] KeyArr = new String[decOutLenght];
+        for (int i=0; i<decOutLenght; i++) {
+            KeyArr[i] = "00000"+KeyField.getText().substring(i*11, i*11+11);
+        }
+        for (int i=0; i<KeyArr.length; i++){
+            arrayKey[i]=Short.parseShort(KeyArr[i],2);
+
+        }
 
         short[] DecodeCipherMess = new short[decOutLenght];
         for (int i = 0; i < decOutLenght; i++) {
